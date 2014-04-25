@@ -11,20 +11,25 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function wp_canvas_2_customize_register( $wp_customize ) {
+	global $wpc2;
+
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+	/***************************/
+	/* Grid Section            */
+	/***************************/
 	$wp_customize->add_section( 'wp_canvas_2_grid' , array(
 		'title'      => __( 'Grid', 'wp-canvas-2' ),
 		'priority'   => 30,
 	) );
 
+	// Site Width
 	$wp_customize->add_setting( 'site_width' , array(
-		'default'     => 1100,
+		'default'     => $wpc2['site_width'],
 		'sanitize_callback'	=> array( 'WP_Canvas_2_Sanitize' , 'number' ),
 	) );
-
 	$wp_customize->add_control(
 		new WP_Customize_Control(
 			$wp_customize,
@@ -38,11 +43,11 @@ function wp_canvas_2_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Sidebar Width
 	$wp_customize->add_setting( 'sidebar_width' , array(
-		'default'     => 300,
+		'default'     => $wpc2['sidebar_width'],
 		'sanitize_callback'	=> array( 'WP_Canvas_2_Sanitize' , 'number' ),
 	) );
-
 	$wp_customize->add_control(
 		new WP_Customize_Control(
 			$wp_customize,
@@ -56,11 +61,11 @@ function wp_canvas_2_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Edge Padding
 	$wp_customize->add_setting( 'edge_padding' , array(
-		'default'     => 40,
+		'default'     => $wpc2['edge_padding'],
 		'sanitize_callback'	=> array( 'WP_Canvas_2_Sanitize' , 'number' ),
 	) );
-
 	$wp_customize->add_control(
 		new WP_Customize_Control(
 			$wp_customize,
@@ -74,11 +79,11 @@ function wp_canvas_2_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Sidebar Edge Padding
 	$wp_customize->add_setting( 'sidebar_edge_padding' , array(
-		'default'     => 100,
+		'default'     => $wpc2['sidebar_edge_padding'],
 		'sanitize_callback'	=> array( 'WP_Canvas_2_Sanitize' , 'number' ),
 	) );
-
 	$wp_customize->add_control(
 		new WP_Customize_Control(
 			$wp_customize,
@@ -91,6 +96,16 @@ function wp_canvas_2_customize_register( $wp_customize ) {
 			)
 		)
 	);
+
+	/***************************/
+	/* Grid Section            */
+	/***************************/
+	$wp_customize->add_section( 'wp_canvas_2_sidebar_display' , array(
+		'title'      => __( 'Sidebar Display', 'wp-canvas-2' ),
+		'priority'   => 50,
+	) );
+
+
 }
 add_action( 'customize_register', 'wp_canvas_2_customize_register' );
 

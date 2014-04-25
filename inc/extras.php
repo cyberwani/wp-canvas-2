@@ -97,10 +97,40 @@ add_action( 'wp', 'wp_canvas_2_setup_author' );
  * @return void
  */
 function wp_canvas_2_customizer_css() {
-	ob_start();
-	include( get_template_directory() . '/layouts/customizer-css.php' );
-	$html = ob_get_clean();
+	$html = '';
 
-	echo $html;
+	ob_start();
+	include( get_template_directory() . '/layouts/css-grid.php' );
+	$html .= ob_get_clean();
+
+	ob_start();
+	include( get_template_directory() . '/layouts/css-body.php' );
+	$html .= ob_get_clean();
+
+	$html = wp_canvas_2_minify_css( $html );
+
+	echo '<style type="text/css">' . $html . '</style>';
 }
 add_action( 'wp_head', 'wp_canvas_2_customizer_css');
+
+/**
+ * Minify CSS
+ *
+ * @since 3.8.1
+ * @access public
+ *
+ * @param string $buffer
+ * @return string
+ */
+function wp_canvas_2_minify_css( $buffer ) {
+	// Remove comments
+	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+	 
+	// Remove space after colons
+	$buffer = str_replace(': ', ':', $buffer);
+	 
+	// Remove whitespace
+	$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+
+	return $buffer;
+}

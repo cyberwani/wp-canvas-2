@@ -1,0 +1,1 @@
+<?php global $wpc2; ?>

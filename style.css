@@ -680,13 +680,36 @@ object {
 /*--------------------------------------------------------------
 13.0 Grid
 --------------------------------------------------------------*/
+.left-background {
+	margin: 0 auto;
+}
+.right-background {
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #ff0000; /* TEST */
+}
 .site {
 	margin: 0 auto;
-	background-color: #eeeeee;
+	background-color: #eeeeee; /* TEST */
+}
+.site-header {
+	background-color: #cccccc; /* TEST */
+}
+.site-content {
+	background-color: #ffffff; /* TEST */
+}
+.site-footer {
+	background-color: #cccccc; /* TEST */
 }
 .content-area {
 	float: left;
 }
 .widget-area {
 	float: right;
+}
+@media screen and (max-width: 568px) {
+	body .right-background {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }

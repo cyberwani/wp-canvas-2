@@ -6,6 +6,11 @@
  */
 
 /**
+ * Load default theme options
+ */
+require get_template_directory() . '/inc/default_options.php';
+
+/**
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
@@ -115,9 +120,10 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
- * Sanitize additions.
+ * Load Classes
  */
-require get_template_directory() . '/inc/sanitize.php';
+require get_template_directory() . '/inc/classes/sanitize.php';
+require get_template_directory() . '/inc/classes/customize_control.php';
 
 /**
  * Customizer additions.
