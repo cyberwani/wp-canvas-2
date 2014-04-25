@@ -97,6 +97,8 @@ add_action( 'wp', 'wp_canvas_2_setup_author' );
  * @return void
  */
 function wp_canvas_2_customizer_css() {
+	global $wpc2;
+
 	$html = '';
 
 	ob_start();

@@ -6,11 +6,6 @@
  */
 
 /**
- * Load default theme options
- */
-require get_template_directory() . '/inc/default_options.php';
-
-/**
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
@@ -105,6 +100,11 @@ function wp_canvas_2_scripts() {
 add_action( 'wp_enqueue_scripts', 'wp_canvas_2_scripts' );
 
 /**
+ * Set default options
+ */
+require get_template_directory() . '/inc/default-options.php';
+
+/**
  * Implement the Custom Header feature.
  */
 //require get_template_directory() . '/inc/custom-header.php';
@@ -123,7 +123,7 @@ require get_template_directory() . '/inc/extras.php';
  * Load Classes
  */
 require get_template_directory() . '/inc/classes/sanitize.php';
-require get_template_directory() . '/inc/classes/customize_control.php';
+require get_template_directory() . '/inc/classes/customize-control.php';
 
 /**
  * Customizer additions.

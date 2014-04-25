@@ -1,5 +1,3 @@
-<?php global $wpc2; ?>
-
 .left-background { 
 	max-width: <?php echo $wpc2['border_width']; ?>px; 
 }
