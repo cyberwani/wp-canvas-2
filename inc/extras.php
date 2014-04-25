@@ -87,3 +87,20 @@ function wp_canvas_2_setup_author() {
 	}
 }
 add_action( 'wp', 'wp_canvas_2_setup_author' );
+
+/**
+ * Output CSS from theme options
+ *
+ * @since 3.8.1
+ * @access public
+ *
+ * @return void
+ */
+function wp_canvas_2_customizer_css() {
+	ob_start();
+	include( get_template_directory() . '/layouts/customizer-css.php' );
+	$html = ob_get_clean();
+
+	echo $html;
+}
+add_action( 'wp_head', 'wp_canvas_2_customizer_css');
